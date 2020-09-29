@@ -275,11 +275,11 @@ function getReferralCommission() {
                 }
                 else {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0065");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.005");
 
                 }
 
-                $('.totalreferral').html(Math.round(1000000 * (referraltotal)) / 1000000);
+                $('.totalreferral').html(Math.round(500000 * (referraltotal)) / 500000);
             });
            
         }
@@ -340,7 +340,7 @@ function getPoolPaymentReceived() {
                 }
 
 
-                $('.totalpoolpayment').html(Math.round(1000000 * (referraltotal)) / 1000000);
+                $('.totalpoolpayment').html(Math.round(500000 * (referraltotal)) / 500000);
             });
         }
     });
