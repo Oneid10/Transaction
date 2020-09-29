@@ -251,7 +251,7 @@ function getVariableData() {
 function getReferralCommission() {
     
 
-    var level1 = parseFloat(0.0075); var level2 = parseFloat(0.005); var level3 = parseFloat(0.0025); var level4 = parseFloat(0.000005);
+    var level1 = parseFloat(0.1); var level2 = parseFloat(0.05); var level3 = parseFloat(0.025); var level4 = parseFloat(0.0025);
 
     var referraltotal = parseFloat(0);
 
@@ -262,20 +262,20 @@ function getReferralCommission() {
                 var level = value.returnValues._level;
 
                 if (level == 1) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.01");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.1");
 
                 }
                 else if (level == 2) {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.005");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.05");
                 }
                 else if (level == 3) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0025");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.025");
 
                 }
                 else {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.00025");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0025");
 
                 }
 
@@ -289,16 +289,16 @@ function getReferralCommission() {
 
 
 function getPoolPaymentReceived() {
-    var pool1_price = 0.1;
-    var pool2_price = 0.2;
-    var pool3_price = 0.5;
-    var pool4_price = 1;
-    var pool5_price = 2;
-    var pool6_price = 5;
-    var pool7_price = 10;
-    var pool8_price = 20;
-    var pool9_price = 50;
-    var pool10_price = 100;
+    var pool1_price = 1;
+    var pool2_price = 2;
+    var pool3_price = 5;
+    var pool4_price = 10;
+    var pool5_price = 20;
+    var pool6_price = 50;
+    var pool7_price = 100;
+    var pool8_price = 200;
+    var pool9_price = 500;
+    var pool10_price = 1000;
 
     var referraltotal = parseFloat(0);
 
@@ -473,7 +473,7 @@ function InDirectreferralCount(address, level) {
 function Transaction_Register() {
     
     var events = myContractInstance.getPastEvents('getMoneyForLevelEvent', {filter:{ _user: account },  'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
-        var level1 = parseFloat(0.01); var level2 = parseFloat(0.005); var level3 = parseFloat(0.0025); var level4 = parseFloat(0.00025);
+        var level1 = parseFloat(0.1); var level2 = parseFloat(0.05); var level3 = parseFloat(0.025); var level4 = parseFloat(0.0025);
 
         if (!error) {
             $.each(log, function (key, value) {
@@ -487,16 +487,16 @@ function Transaction_Register() {
 
 function Transaction_Pool() {
     var events = myContractInstance.getPastEvents('getPoolPayment', {filter:{ _receiver: account },  'fromBlock': 0, 'toBlock': 'latest' }, function (error, log) {
-        var pool1_price = 0.1;
-        var pool2_price = 0.2;
-        var pool3_price = 0.5;
-        var pool4_price = 1;
-        var pool5_price = 2;
-        var pool6_price = 5;
-        var pool7_price = 10;
-        var pool8_price = 20;
-        var pool9_price = 50;
-        var pool10_price = 100;
+        var pool1_price = 1;
+        var pool2_price = 2;
+        var pool3_price = 5;
+        var pool4_price = 10;
+        var pool5_price = 20;
+        var pool6_price = 50;
+        var pool7_price = 100;
+        var pool8_price = 200;
+        var pool9_price = 500;
+        var pool10_price = 1000;
 
         if (!error) {
             $.each(log, function (key, value) {
