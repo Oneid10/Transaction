@@ -204,26 +204,31 @@ function getVariableData() {
             $('.TotalUsers').html(result);
 
     });
- myContractInstance.methods.users(account).call().then(function (result1) {
+
+    myContractInstance.methods.users(account).call().then(function (result1) {
         
-            $('.currentuseridlink').html("https://oneid10.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlink').html("https://1dapp.github.io/signup/?referralid=" + result1.id);
 
-            $('.currentuseridlinknew').html("https://link.trustwallet.com/open_url?coin_id=60&url=https://oneid10.github.io/signup/?referralid=" + result1.id);
-
-
-
-            $('.currentuseridlink').val("https://oneid10.github.io/signup/?referralid=" + result1.id);
-
-            $('.currentuseridlinknew').val("https://link.trustwallet.com/open_url?coin_id=60&url=https://oneid10.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlinknew').html("https://link.trustwallet.com/open_url?coin_id=60&url=https://1dapp.github.io/signup/?referralid=" + result1.id);
 
 
 
-            $('.sharebutton').attr('data-url', "https://oneid10.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlink').val("https://1dapp.github.io/signup/?referralid=" + result1.id);
+
+            $('.currentuseridlinknew').val("https://link.trustwallet.com/open_url?coin_id=60&url=https://1dapp.github.io/signup/?referralid=" + result1.id);
+
+
+
+            $('.sharebutton').attr('data-url', "https://1dapp.github.io/signup/?referralid=" + result1.id);
             $('.currentuserid').html(result1.id);
             $('.currentaddress').html(account);
             $('.ethaddress').attr('href', 'https://etherscan.io/address/' + account);
         
-    }); 
+    });
+
+    
+
+
     if (account !== 'undefined') {
         getReferralCommission();
         getPoolPaymentReceived();
@@ -238,11 +243,15 @@ function getVariableData() {
     
     
     DirectreferralCount();
-} 
+}
+
+
+
+
 function getReferralCommission() {
     
 
-    var level1 = parseFloat(0.1); var level2 = parseFloat(0.05); var level3 = parseFloat(0.025); var level4 = parseFloat(0.0025);
+    var level1 = parseFloat(0.0075); var level2 = parseFloat(0.005); var level3 = parseFloat(0.0025); var level4 = parseFloat(0.000005);
 
     var referraltotal = parseFloat(0);
 
@@ -253,24 +262,24 @@ function getReferralCommission() {
                 var level = value.returnValues._level;
 
                 if (level == 1) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.1");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.01");
 
                 }
                 else if (level == 2) {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.05");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.005");
                 }
                 else if (level == 3) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.025");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0025");
 
                 }
                 else {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0025");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.00025");
 
                 }
 
-                $('.totalreferral').html(Math.round(10000000 * (referraltotal)) / 1000000);
+                $('.totalreferral').html(Math.round(1000000 * (referraltotal)) / 1000000);
             });
            
         }
@@ -280,16 +289,16 @@ function getReferralCommission() {
 
 
 function getPoolPaymentReceived() {
-    var pool1_price = 1;
-    var pool2_price = 2;
-    var pool3_price = 5;
-    var pool4_price = 10;
-    var pool5_price = 20;
-    var pool6_price = 50;
-    var pool7_price = 100;
-    var pool8_price = 200;
-    var pool9_price = 500;
-    var pool10_price = 1000;
+    var pool1_price = 0.1;
+    var pool2_price = 0.2;
+    var pool3_price = 0.5;
+    var pool4_price = 1;
+    var pool5_price = 2;
+    var pool6_price = 5;
+    var pool7_price = 10;
+    var pool8_price = 20;
+    var pool9_price = 50;
+    var pool10_price = 100;
 
     var referraltotal = parseFloat(0);
 
@@ -345,7 +354,7 @@ var employees = {
     accounting: []
 };
 var str = "";
-//'0x'
+//'0x97438b2a8D5cea628B8F616CA2E4E895defAcF32'
 function Directreferral() {
     
     var events = myContractInstance.getPastEvents('regLevelEvent', {filter:{ _referrer: account }, 'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
@@ -464,7 +473,7 @@ function InDirectreferralCount(address, level) {
 function Transaction_Register() {
     
     var events = myContractInstance.getPastEvents('getMoneyForLevelEvent', {filter:{ _user: account },  'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
-        var level1 = parseFloat(0.1); var level2 = parseFloat(0.05); var level3 = parseFloat(0.025); var level4 = parseFloat(0.0025);
+        var level1 = parseFloat(0.01); var level2 = parseFloat(0.005); var level3 = parseFloat(0.0025); var level4 = parseFloat(0.00025);
 
         if (!error) {
             $.each(log, function (key, value) {
@@ -478,16 +487,16 @@ function Transaction_Register() {
 
 function Transaction_Pool() {
     var events = myContractInstance.getPastEvents('getPoolPayment', {filter:{ _receiver: account },  'fromBlock': 0, 'toBlock': 'latest' }, function (error, log) {
-        var pool1_price = 1;
-        var pool2_price = 2;
-        var pool3_price = 5;
-        var pool4_price = 10;
-        var pool5_price = 20;
-        var pool6_price = 50;
-        var pool7_price = 100;
-        var pool8_price = 200;
-        var pool9_price = 500;
-        var pool10_price = 1000;
+        var pool1_price = 0.1;
+        var pool2_price = 0.2;
+        var pool3_price = 0.5;
+        var pool4_price = 1;
+        var pool5_price = 2;
+        var pool6_price = 5;
+        var pool7_price = 10;
+        var pool8_price = 20;
+        var pool9_price = 50;
+        var pool10_price = 100;
 
         if (!error) {
             $.each(log, function (key, value) {
@@ -496,7 +505,8 @@ function Transaction_Pool() {
         }
     });
 }
-</script> 
+
+</script>
 
 <script>
 
