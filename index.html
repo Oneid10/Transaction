@@ -361,38 +361,7 @@ function Directreferral() {
 }
 
 
-function InDirectreferral(address, level) {
-    var events = myContractInstance.getPastEvents('regLevelEvent', {filter:{ _referrer: address },  'fromBlock': 0, 'toBlock': 'latest' }, function (error, log) {
 
-        if (!error) {
-            $.each(log, function (key, value) {
-                if (templevel != level) {
-                    str += '';
-                }
-                if (templevel != level) {
-                    templevel = level;
-                    $('#accordion11').append('<div class="panel-heading1 bg-primary ">' +
-                        '<h4 class= "panel-title1">' +
-                        '<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1' + level + '" href="#collapseFour1' + level + '" aria-expanded="false"><i class="fe fe-arrow-right mr-2"></i>Level ' + level + '</a>' +
-                        '</h4 >' +
-                        '</div >' +
-                        '<div id="collapseFour1' + level + '" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">' +
-                        '<div class= "panel-body border" ></div></div></div>')
-                        ;
-                }
-                $('#collapseFour1' + level + ' .panel-body').append('<p style=color:green>' + value.returnValues._user + '</p>');
-
-                employees.accounting.push({
-
-                    'address': value.returnValues._user,
-                    "level": level
-
-                });
-                InDirectreferral(value.returnValues._user, level + 1);
-            });
-        }
-    });
-}
 
 function DirectreferralCount() {
     
