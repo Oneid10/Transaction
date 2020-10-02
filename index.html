@@ -250,37 +250,7 @@ function getVariableData() {
 
 
 
-function getReferralCommission() {
-    
 
-    var level1 = parseFloat(0.1); 
-
-    var referraltotal = parseFloat(0);
-
-    var events = myContractInstance.getPastEvents('getMoneyForLevelEvent', { filter: { _user: account }, 'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
-        
-        if (!error) {
-            $.each(log, function (key, value) {
-                var level = value.returnValues._level;
-
-                if (level == 1) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.1");
-
-                }
-                
-                else {
-
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0025");
-
-                }
-
-                $('.totalreferral').html(Math.round(1000000 * (referraltotal)) / 1000000);
-            });
-           
-        }
-    });
-
-}
 
 
 function getPoolPaymentReceived() {
