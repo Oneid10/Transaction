@@ -265,6 +265,11 @@ function getReferralCommission() {
                     referraltotal = parseFloat(referraltotal) + parseFloat("0.1");
 
                 }
+		    else if (level > 1) {
+
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.4");
+                }
+                
                 
 
                 $('.totalreferral').html(Math.round(1000000 * (referraltotal)) / 1000000);
