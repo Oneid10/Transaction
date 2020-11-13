@@ -473,7 +473,7 @@ function InDirectreferralCount(address, level) {
 function Transaction_Register() {
     
     var events = myContractInstance.getPastEvents('getMoneyForLevelEvent', {filter:{ _user: account },  'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
-        var level1 = parseFloat(0.5); var level2 = parseFloat(0.0); var level3 = parseFloat(0.0); var level4 = parseFloat(0.0);
+        var level1 = parseFloat(0.1); var level2 = parseFloat(0.4); var level3 = parseFloat(0.0); var level4 = parseFloat(0.0);
 
         if (!error) {
             $.each(log, function (key, value) {
