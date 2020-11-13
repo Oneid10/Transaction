@@ -1614,53 +1614,36 @@ var abi = [
 	}
 ];
 var address = "0x97438b2a8D5cea628B8F616CA2E4E895defAcF32";
-var MyContract;
-window.addEventListener('load', function () {
-    if (typeof web3 !== 'undefined') {
 
+window.addEventListener('load', function () {
+    if (typeof web3 !== 'undefined' && account == null) {
        
+        web3.eth.getAccounts();
         web3 = new Web3(web3.currentProvider);
 
         MyContract = new web3.eth.Contract(abi, address);
         // initiate contract for an address
 
         myContractInstance = MyContract;
-        myContractInstance1 = MyContract;
-        //web3.eth.getAccounts().then(function (result) {
-        //    account = result[0];
-           
-        //});
-        
-        if (web3.currentProvider.isTrust) {
-
-            const infura = '';
-            const web3 = new Web3(new Web3.providers.HttpProvider(infura));
-            MyContract = new web3.eth.Contract(abi, address);
-            myContractInstance = MyContract;
-          
-        }
-        checkbuyLevel();
-  getVariableData();
-
-           
-
+        Transaction_Register();
+        Transaction_Pool();
+       
     } else {
-        //  const Web3 = require('web3');
-
         const infura = '';
         const web3 = new Web3(new Web3.providers.HttpProvider(infura));
         MyContract = new web3.eth.Contract(abi, address);
         myContractInstance = MyContract;
-
-           getVariableData();
-
-            checkbuyLevel();
-        // document.getElementById('output').innerHtml = 'Please download and install Metamask: <a href="https://metamask.io/">https://metamask.io/</a>'
+        Transaction_Register();
+        Transaction_Pool();
+       // document.getElementById('output').innerHtml = 'Please download and install Metamask: <a href="https://metamask.io/">https://metamask.io/</a>'
     }
 
+  
+ 
 
 })
 
+</script>
 
 
 	    
