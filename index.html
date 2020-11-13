@@ -251,7 +251,7 @@ function getVariableData() {
 function getReferralCommission() {
     
 
-    parseFloat(0.1); var level2 = parseFloat(0.1); var level3 = parseFloat(0.05); var level4 = parseFloat(0.005);
+    var level1 = parseFloat(0.1); var level2 = parseFloat(0.0); var level3 = parseFloat(0.0); var level4 = parseFloat(0.01);
 
     var referraltotal = parseFloat(0);
 
@@ -267,15 +267,15 @@ function getReferralCommission() {
                 }
                 else if (level == 2) {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.1");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0");
                 }
                 else if (level == 3) {
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.05");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.0");
 
                 }
                 else {
 
-                    referraltotal = parseFloat(referraltotal) + parseFloat("0.005");
+                    referraltotal = parseFloat(referraltotal) + parseFloat("0.01");
 
                 }
 
@@ -473,7 +473,7 @@ function InDirectreferralCount(address, level) {
 function Transaction_Register() {
     
     var events = myContractInstance.getPastEvents('getMoneyForLevelEvent', {filter:{ _user: account },  'fromBlock': 0, 'toBlock': 'latest'}, function (error, log) {
-        var level1 = parseFloat(0.1); var level2 = parseFloat(0.1); var level3 = parseFloat(0.05); var level4 = parseFloat(0.005);
+        var level1 = parseFloat(0.1); var level2 = parseFloat(0.0); var level3 = parseFloat(0.0); var level4 = parseFloat(0.01);
 
         if (!error) {
             $.each(log, function (key, value) {
